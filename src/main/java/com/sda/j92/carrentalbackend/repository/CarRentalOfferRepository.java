@@ -5,6 +5,5 @@ import com.sda.j92.carrentalbackend.model.CarRentalOffer;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CarRentalOfferRepository extends JpaRepository<Long, CarRentalOffer> {
-    CarRentalOffer
+public interface CarRentalOfferRepository extends JpaRepository<CarRentalOffer, Long> {
 }
