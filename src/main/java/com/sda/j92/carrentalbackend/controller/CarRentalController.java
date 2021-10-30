@@ -7,23 +7,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://*", maxAge = 3600)
+@CrossOrigin()
 @RestController
 @RequestMapping("/offers")
 @RequiredArgsConstructor
 public class CarRentalController {
     private final CarRentalService carRentalService;
 
+    @CrossOrigin()
     @GetMapping("")
     public List<CarRentalOffer> get(){
         return carRentalService.findAll();
     }
 
+    @CrossOrigin()
     @PostMapping("")
     public void add(CarRentalOffer offer){
         carRentalService.add(offer);
     }
 
+    @CrossOrigin()
     @DeleteMapping("/{id}")
     public void add(@PathVariable Long id){
         carRentalService.delete(id);
