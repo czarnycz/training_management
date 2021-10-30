@@ -22,7 +22,7 @@ public class CarRentalController {
 
     @CrossOrigin()
     @PostMapping("")
-    public void add(CarRentalOffer offer){
+    public void add(@RequestBody  CarRentalOffer offer){
         carRentalService.add(offer);
     }
 
