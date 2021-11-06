@@ -39,6 +39,7 @@ public class AcademyTrainingService {
 
             TrainingDto dto = TrainingDto.builder()
                     .id(academyTraining.getId())
+                    .name(academyTraining.getName())
                     .trainer(academyTraining.getTrainer())
                     .length(academyTraining.getLength())
                     .timeStart(academyTraining.getTimeStart())
