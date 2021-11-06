@@ -9,7 +9,7 @@ import java.util.List;
 
 @CrossOrigin()
 @RestController
-@RequestMapping("/offers")
+@RequestMapping("/trainings")
 @RequiredArgsConstructor
 public class AcademyTrainingController {
     private final AcademyTrainingService academyTrainingService;
