@@ -1,7 +1,7 @@
-package com.sda.j92.carrentalbackend.service;
+package com.sda.j92.academy.service;
 
-import com.sda.j92.carrentalbackend.model.AcademyTraining;
-import com.sda.j92.carrentalbackend.repository.AcademyTrainingRepository;
+import com.sda.j92.academy.model.AcademyTraining;
+import com.sda.j92.academy.repository.AcademyTrainingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

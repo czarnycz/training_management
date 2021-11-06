@@ -1,4 +1,4 @@
-package com.sda.j92.carrentalbackend.controller;
+package com.sda.j92.academy.controller;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

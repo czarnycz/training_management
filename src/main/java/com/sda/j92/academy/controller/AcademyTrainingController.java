@@ -1,7 +1,7 @@
-package com.sda.j92.carrentalbackend.controller;
+package com.sda.j92.academy.controller;
 
-import com.sda.j92.carrentalbackend.model.AcademyTraining;
-import com.sda.j92.carrentalbackend.service.AcademyTrainingService;
+import com.sda.j92.academy.model.AcademyTraining;
+import com.sda.j92.academy.service.AcademyTrainingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

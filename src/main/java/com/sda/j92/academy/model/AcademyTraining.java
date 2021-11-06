@@ -1,4 +1,4 @@
-package com.sda.j92.carrentalbackend.model;
+package com.sda.j92.academy.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
