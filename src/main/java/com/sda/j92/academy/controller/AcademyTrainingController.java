@@ -1,6 +1,7 @@
 package com.sda.j92.academy.controller;
 
 import com.sda.j92.academy.model.AcademyTraining;
+import com.sda.j92.academy.model.TrainingDto;
 import com.sda.j92.academy.service.AcademyTrainingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -32,4 +33,9 @@ public class AcademyTrainingController {
         academyTrainingService.delete(id);
     }
 
+    @CrossOrigin()
+    @GetMapping("/{id}")
+    public TrainingDto getById(@PathVariable Long id){
+        return academyTrainingService.getById(id);
+    }
 }

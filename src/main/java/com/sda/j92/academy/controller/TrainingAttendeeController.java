@@ -34,4 +34,5 @@ public class TrainingAttendeeController {
         attendeeService.delete(id);
     }
 
+
 }
