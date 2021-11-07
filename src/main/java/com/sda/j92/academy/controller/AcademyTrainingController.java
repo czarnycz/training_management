@@ -38,4 +38,9 @@ public class AcademyTrainingController {
     public TrainingDto getById(@PathVariable Long id){
         return academyTrainingService.getById(id);
     }
+
+    @PostMapping("/add/attendee/{trainingId}/{attendeeId}")
+    public TrainingDto addAttendeeToTraining(@PathVariable  Long trainingId, @PathVariable Long attendeeId){
+        return academyTrainingService.addAttendeeToTraining(trainingId, attendeeId);
+    }
 }
