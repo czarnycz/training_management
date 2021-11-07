@@ -39,8 +39,13 @@ public class AcademyTrainingController {
         return academyTrainingService.getById(id);
     }
 
-    @PostMapping("/add/attendee/{trainingId}/{attendeeId}")
+    @PostMapping("/attendee/{trainingId}/{attendeeId}")
     public TrainingDto addAttendeeToTraining(@PathVariable  Long trainingId, @PathVariable Long attendeeId){
         return academyTrainingService.addAttendeeToTraining(trainingId, attendeeId);
+    }
+
+    @DeleteMapping("/attendee/{trainingId}/{attendeeId}")
+    public TrainingDto removeAttendeeFromTraining(@PathVariable  Long trainingId, @PathVariable Long attendeeId){
+        return academyTrainingService.removeAttendeeFromTraining(trainingId, attendeeId);
     }
 }

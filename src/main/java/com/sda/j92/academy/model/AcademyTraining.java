@@ -25,6 +25,6 @@ public class AcademyTraining {
 
     // trainings - nazwa pola w klasie TrainingAttendee
     //  podajemy ją żeby Hibernate "wiedział" że jest to wzajemna relacja
-    @ManyToMany(mappedBy = "trainings", fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private Set<TrainingAttendee> attendees;
 }

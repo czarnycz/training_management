@@ -79,4 +79,27 @@ public class AcademyTrainingService {
         }
         return null;
     }
+
+    public TrainingDto removeAttendeeFromTraining(Long trainingId, Long attendeeId) {
+        Optional<AcademyTraining> trainingOptional = academyTrainingRepository.findById(trainingId);
+        Optional<TrainingAttendee> attendeeOptional = attendeeRepository.findById(attendeeId);
+
+        if (trainingOptional.isPresent() && attendeeOptional.isPresent()){
+            AcademyTraining training = trainingOptional.get();
+            TrainingAttendee attendee = attendeeOptional.get();
+
+            training.getAttendees().remove(attendee);
+            training = academyTrainingRepository.save(training);
+
+            TrainingDto dto = TrainingDto.builder()
+                    .id(training.getId())
+                    .name(training.getName())
+                    .trainer(training.getTrainer())
+                    .length(training.getLength())
+                    .timeStart(training.getTimeStart())
+                    .build();
+            return dto;
+        }
+        return null;
+    }
 }

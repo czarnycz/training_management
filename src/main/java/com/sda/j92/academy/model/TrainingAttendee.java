@@ -24,6 +24,6 @@ public class TrainingAttendee {
     private String email;
     private String address;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "attendees", fetch = FetchType.LAZY)
     private Set<AcademyTraining> trainings;
 }
