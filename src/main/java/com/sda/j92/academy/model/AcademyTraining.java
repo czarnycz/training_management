@@ -1,8 +1,6 @@
 package com.sda.j92.academy.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -25,6 +23,8 @@ public class AcademyTraining {
 
     // trainings - nazwa pola w klasie TrainingAttendee
     //  podajemy ją żeby Hibernate "wiedział" że jest to wzajemna relacja
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<TrainingAttendee> attendees;
 }

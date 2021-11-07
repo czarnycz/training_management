@@ -1,9 +1,7 @@
 package com.sda.j92.academy.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -24,6 +22,8 @@ public class TrainingAttendee {
     private String email;
     private String address;
 
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToMany(mappedBy = "attendees", fetch = FetchType.LAZY)
     private Set<AcademyTraining> trainings;
 }
