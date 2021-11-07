@@ -25,6 +25,6 @@ public class AcademyTraining {
     //  podajemy ją żeby Hibernate "wiedział" że jest to wzajemna relacja
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<TrainingAttendee> attendees;
 }

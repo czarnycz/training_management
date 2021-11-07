@@ -43,10 +43,9 @@ public class AcademyTrainingService {
                     .trainer(academyTraining.getTrainer())
                     .length(academyTraining.getLength())
                     .timeStart(academyTraining.getTimeStart())
+                    .attendees(academyTraining.getAttendees())
                     .build();
 
-            List<TrainingAttendee> attendees = attendeeRepository.findAllByTrainings(academyTraining);
-            dto.setAttendees(new HashSet<>(attendees));
             return dto;
         }
         throw new EntityNotFoundException("Not found: " + id);
