@@ -2,18 +2,12 @@ import classes from "./AppHeader.module.css";
 import {Link} from 'react-router-dom';
 
 import Storage from '@material-ui/icons/Storage'
-import AddComment from '@material-ui/icons/AddComment'
-import logo from "../logo.svg";
+import logo from "../../logo.svg";
 
 const HEADER_BUTTONS = [
     {
-        name: 'Form', /* Link do formularza */
-        href: '/form',
-        icon: (<AddComment fontSize={"small"}/>),
-    },
-    {
-        name: 'Database', /* Link do tablicy z listą rekordów/danych */
-        href: '/database',
+        name: 'Trainings', /* Link do tablicy z listą rekordów/danych */
+        href: '/trainings',
         icon: (<Storage fontSize={"small"}/>),
     },
     {
