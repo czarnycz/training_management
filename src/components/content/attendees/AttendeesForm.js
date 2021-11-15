@@ -1,55 +1,42 @@
-import classes from './TrainingsForm.module.css';
-import DatePicker from 'react-datepicker';
+import classes from './AttendeesForm.module.css';
+
 import "react-datepicker/dist/react-datepicker.css";
 import CardComponent from "../../CardComponent";
 import DeleteIcon from '@material-ui/icons/Delete';
 import {Button, Grid, TextField} from "@material-ui/core";
 import {useState} from "react";
 import axios from "axios";
-import data from "bootstrap/js/src/dom/data";
 
-const getDateStringFromDateObject = (dateObject) => {
-    let ye = new Intl.DateTimeFormat('en', {year: 'numeric'}).format(dateObject);
-    let mo = new Intl.DateTimeFormat('en', {month: 'numeric'}).format(dateObject);
-    let da = new Intl.DateTimeFormat('en', {day: '2-digit'}).format(dateObject);
-
-    return `${ye}-${mo}-${da}`
-}
 
 // Model / encja pustej oferty/nowego obiektu
-const EMPTY_NEW_TRAINING = {
+const EMPTY_NEW_ATTENDEE = {
     'id': null,
     'name': null,
-    'timeStart': getDateStringFromDateObject(new Date),
-    'length': 1,
-    'trainer': null,
+    'surname': null,
+    'pesel': null,
+    'email': null,
+    'address': null,
 }
 
-const TrainingsForm = () => {
+const AttendeesForm = () => {
     // Tworząc formularz nadajemy mu stan pustego obiektu
     //  Wartości domyślne formularza kopiowane są z obiektu EMPTY_NEW_TRAINING
-    const [editedTraining, setEditedTraining] = useState({...EMPTY_NEW_TRAINING});
-    const [timeStart, setTimeStart] = useState(new Date());
+    const [editedAttendees, setEditedAttendees] = useState({...EMPTY_NEW_ATTENDEE});
+
 
     const handleChangeForm = name => event => {
-        setEditedTraining({...editedTraining, [name]: event.target.value});
-    };
-
-    const handleDateChangeForm = name => date => {
-        const finalDate = getDateStringFromDateObject(date)
-        setTimeStart(date)
-        setEditedTraining({...editedTraining, [name]: finalDate});
+        setEditedAttendees({...editedAttendees, [name]: event.target.value});
     };
 
     const handleClearForm = () => {
-        setEditedTraining({...EMPTY_NEW_TRAINING})
+        setEditedAttendees({...EMPTY_NEW_ATTENDEE})
     }
 
     const handleSubmit = () => {
         // wysłanie obiektu na serwer
-        console.log("Wysyłamy:" + JSON.stringify(editedTraining))
+        console.log("Wysyłamy:" + JSON.stringify(editedAttendees))
 
-        axios.post('http://localhost:8080/trainings',editedTraining)
+        axios.post('http://localhost:8080/attendees',editedAttendees)
             .then((data)=>{
                 console.log("Odpowiedz sukces: " + JSON.stringify(data));
             })
@@ -61,36 +48,37 @@ const TrainingsForm = () => {
 
     return (
         <div>
-            <CardComponent title={'Training Form'}>
+            <CardComponent title={'Attendees Form'}>
                 <Grid container className={classes.FormContainer}>
                     <Grid item xs={12}>
-                        <TextField value={editedTraining.name}
+                        <TextField value={editedAttendees.name}
                                    onChange={handleChangeForm("name")}
                                    className={classes.FormStretchField}
-                                   label={'Training name'} size={'small'} variant="filled"/>
+                                   label={'Name'} size={'small'} variant="filled"/>
                     </Grid>
                     <Grid item xs={12}>
-                        <TextField value={editedTraining.trainer}
-                                   onChange={handleChangeForm("trainer")}
+                        <TextField value={editedAttendees.surname}
+                                   onChange={handleChangeForm("surname")}
                                    className={classes.FormStretchField}
-                                   label={'Trainer'} size={'small'} variant="filled"/>
+                                   label={'Surname'} size={'small'} variant="filled"/>
                     </Grid>
                     <Grid item xs={12}>
-                        <DatePicker selected={timeStart}
-                                    onChange={handleDateChangeForm("timeStart")}>
-                        </DatePicker>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField value={editedTraining.length}
-                                   onChange={handleChangeForm("length")}
+                        <TextField value={editedAttendees.pesel}
+                                   onChange={handleChangeForm("pesel")}
                                    className={classes.FormStretchField}
-                                   type="number"
-                                   inputProps={{
-                                       'min': 1,
-                                       'max': 10,
-                                       'step': 1,
-                                   }}
-                                   label={'Length (days)'} size={'small'} variant="filled"/>
+                                   label={'Pesel'} size={'small'} variant="filled"/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField value={editedAttendees.email}
+                                   onChange={handleChangeForm("email")}
+                                   className={classes.FormStretchField}
+                                   label={'Email'} size={'small'} variant="filled"/>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField value={editedAttendees.address}
+                                   onChange={handleChangeForm("address")}
+                                   className={classes.FormStretchField}
+                                   label={'Address'} size={'small'} variant="filled"/>
                     </Grid>
                     <Grid item xs={1}/>
                     <Grid container item xs={10}>
@@ -116,4 +104,4 @@ const TrainingsForm = () => {
     )
 }
 
-export default TrainingsForm;
+export default AttendeesForm;

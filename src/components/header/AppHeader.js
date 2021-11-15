@@ -2,19 +2,26 @@ import classes from "./AppHeader.module.css";
 import {Link} from 'react-router-dom';
 
 import Storage from '@material-ui/icons/Storage'
+import PeopleAlt from '@material-ui/icons/PeopleAlt'
 import logo from "../../logo.svg";
 
 const HEADER_BUTTONS = [
     {
-        name: 'Trainings', /* Link do tablicy z listą rekordów/danych */
+        name: 'Trainings', /* Link do tablicy z listą rekordów/danych o kursach */
         href: '/trainings',
         icon: (<Storage fontSize={"small"}/>),
+    },
+    {
+        name: 'Attendees', /* Link do tablicy z listą rekordów/danych o uczestnikach */
+        href: '/attendees',
+        icon: (<PeopleAlt fontSize={"small"}/>),
     },
     {
         name: 'Home',
         href: '/',
         icon: (<></>),  /* Brak ikony */
     },
+
 ]
 
 const AppHeader = () => {
