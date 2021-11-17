@@ -15,6 +15,12 @@ const AttendeesTable = (props) => {
                 console.log("Otrzymaliśmy odpowiedź o błędzie!");
             });
     }
+    // let addButton = (<></>);
+    // if (props.onAdd){
+    //     addButton = (<TableCell align="right">
+    //         <Button onClick={props.onAdd}>Add</Button>
+    //     </TableCell>)
+    // }
 
     return <CardComponent title={'Attendees List'}>
         <div className={classes.TableContainer}>
@@ -25,35 +31,46 @@ const AttendeesTable = (props) => {
                             <TableCell>Id</TableCell>
                             <TableCell align="right">First Name</TableCell>
                             <TableCell align="right">Last Name</TableCell>
-                            <TableCell align="right">Pesel</TableCell>
-                            <TableCell align="right">Email</TableCell>
-                            <TableCell align="right">Address</TableCell>
-                            <TableCell align="right">Delete</TableCell>
-                            <TableCell align="right">Edit</TableCell>
-                            <TableCell align="right">Details</TableCell>
+                            <TableCell align="right"/>
+                            <TableCell align="right"/>
+                            <TableCell align="right"/>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {props.rows.map((row) => (
-                            <TableRow
-                                key={row.name}
-                                sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                            >
+                        {props.rows.map((row) => {
+                            let addButton = (<></>);
+                            let removeButton = (<></>);
+                            if (props.onAdd) {
+                                addButton = (<TableCell align="right">
+                                    <Button onClick={() => {
+                                        props.onAdd(row.id)
+                                    }}>Add</Button>
+                                </TableCell>)
+                            }
+                            if (props.onRemove) {
+                                removeButton = (<TableCell align="right">
+                                    <Button onClick={() => {
+                                        props.onRemove(row.id)
+                                    }}>Remove</Button>
+                                </TableCell>)
+                            }
+
+                            return (<TableRow
+                                key={row.id}
+                                sx={{'&:last-child td, &:last-child th': {border: 0}}}>
                                 <TableCell component="th" scope="row">{row.id}</TableCell>
                                 <TableCell align="right">{row.name}</TableCell>
                                 <TableCell align="right">{row.surname}</TableCell>
-                                <TableCell align="right">{row.pesel}</TableCell>
-                                <TableCell align="right">{row.email}</TableCell>
-                                <TableCell align="right">{row.address}</TableCell>
                                 <TableCell align="right">
                                     <Button onClick={() => {handleRemoveRecord(row)}}>Delete</Button>
                                 </TableCell>
-                                <TableCell align="right">Edit</TableCell>
-                                <TableCell align="right">
-                                    <Button>Details</Button>
-                                </TableCell>
-                            </TableRow>
-                        ))}
+
+                                {
+                                    (props.isAdded !== undefined && props.isAdded(row.id)) ? removeButton : addButton
+                                }
+
+                            </TableRow>)
+                        })}
                     </TableBody>
                 </Table>
             </TableContainer>
