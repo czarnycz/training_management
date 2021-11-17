@@ -89,6 +89,7 @@ const TrainingAddAttendee = () => {
     return (
         <div>
             <AttendeesTable rows={attendees}
+                            hideDelete={true}
                             onAdd={addAttendeeToTraining}
                             onRemove={removeAttendeeFromTraining}
                             isAdded={isAttendeeAdded}/>

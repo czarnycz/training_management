@@ -62,10 +62,10 @@ const TrainingDetails = () => {
             </CardComponent>
             <div className={classes.AddButtonContainer}>
                 <Link to={`/trainings/add/attendee/${training.id}`} className={classes.TrainingsAddButton}>
-                    <Button variant="outlined">Add New</Button>
+                    <Button variant="outlined">Manage Attendees</Button>
                 </Link>
             </div>
-            <AttendeesTable rows={training.attendees} refreshData={pullRecords}/>
+            <AttendeesTable rows={training.attendees} hideDelete={true} refreshData={pullRecords}/>
         </div>
     )
 }

@@ -62,9 +62,10 @@ const AttendeesTable = (props) => {
                                 <TableCell align="right">{row.name}</TableCell>
                                 <TableCell align="right">{row.surname}</TableCell>
                                 <TableCell align="right">
-                                    <Button onClick={() => {handleRemoveRecord(row)}}>Delete</Button>
+                                    {
+                                        props.hideDelete ? (<></>) : <Button onClick={() => {handleRemoveRecord(row)}}>Delete</Button>
+                                    }
                                 </TableCell>
-
                                 {
                                     (props.isAdded !== undefined && props.isAdded(row.id)) ? removeButton : addButton
                                 }
